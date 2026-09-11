@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKEN
+   Semua warna dan font proyek ini diatur dari satu tempat: di sini.
+   Ubah nilainya, seluruh halaman ikut berubah.
+   ============================================================ */
+@theme {
+  /* Siang: nuansa kertas album lama */
+  --color-kertas: #f0e7dc;
+  --color-kertas-terang: #fff8f2;
+  --color-tinta: #2b2119;
+  --color-tinta-lembut: #6c5b4c;
+  --color-garis: #d9cbb8;
+  --color-aksen: #c4622d;
+
+  /* Malam: bagian penutup */
+  --color-malam: #14181d;
+  --color-gading: #ede7de;
+  --color-lampu: #e8b44a;
+  --color-malam-lembut: #8d8578;
+
+  --font-judul: "Playfair Display", Georgia, serif;
+  --font-isi: "Newsreader", Georgia, serif;
+  --font-label: "Space Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-kertas);
+  color: var(--color-tinta);
+  font-family: var(--font-isi);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #d8c3b0;
+  color: #140b05;
+}
+
+/* Kilau emas yang sesekali menyapu ucapan ulang tahun */
+.kilau {
+  background-image: linear-gradient(
+    110deg,
+    var(--color-lampu) 40%,
+    #fff3d1 50%,
+    var(--color-lampu) 60%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: kilau 7s ease-in-out infinite both;
+}
+
+@keyframes kilau {
+  0% {
+    background-position: 100% 0;
+  }
+  30%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+/* Hormati preferensi sistem "kurangi gerak" */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
